@@ -1,0 +1,64 @@
+version: 1
+
+score:
+  malware:
+    safe: 50
+    danger: -500
+  scanner:
+    CLEAN: 40
+    INCONCLUSIVE: 20
+    SUSPICIOUS: -400
+    MALICIOUS: -500
+    INFECTED: -500
+    NOT_SCANNED: 0
+    NON_SCANNABLE: 0
+    FAILED: 0
+    UNKNOWN: 0
+  validation:
+    VALIDATED: 30
+    VALID: 30
+    INVALID: -500
+    UNKNOWN: 0
+    NOT_VALIDATED: 0
+  latest:
+    true: 20
+    false: 0
+  immutable:
+    true: 20
+    false: 0
+    unknown: 0
+
+threshold:
+  BEST: 100
+  GOOD: 70
+  ACCEPTABLE: 0
+
+danger_rules:
+  scanner_danger_values:
+    - SUSPICIOUS
+    - MALICIOUS
+    - INFECTED
+  validation_danger_values:
+    - INVALID
+  malware_detected_value: true
+
+columns:
+  activated_plan_id: ACTIVATED_PLAN_ID
+  group_id: GROUP_ID
+  copy_type: COPY_TYPE
+  source_system: SOURCE_SYSTEM
+  source_type: SOURCE_TYPE
+  scannable: SCANNABLE
+  scan_job_result_raw: SCAN_JOB_RESULT_RAW
+  scan_job_result: SCAN_JOB_RESULT
+  validation_successful_raw: VALIDATION_SUCCESSFUL_RAW
+  validation_status: VALIDATION_STATUS
+  is_latest: IS_LATEST
+  immutable: IMMUTABLE
+  malware_anomaly_detected: MALWARE_ANOMALY_DETECTED
+  label: LABEL
+
+artifacts:
+  model_file: recovery_point_xgb_model.joblib
+  test_predictions_file: recovery_point_test_predictions.xlsx
+  best_prediction_file: best_recovery_point_prediction.xlsx
